@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Dress-Up Game</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="three_scroll_bar_style.css">
+  <link rel="stylesheet" href="scroll.css">
+
+  <style>
+    /* Loading screen */
+    #loading-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 1.5s ease;
+    }
+
+    .spinner {
+      border: 6px solid #ccc;
+      border-top: 6px solid #09f;
+      border-radius: 50%;
+      width: 50px; height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    #loading-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Base container fallback */
+    .base-container img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Reduce jank on mobile */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    button {
+      will-change: transform;
+    }
+  </style>
+</head>
+<body>
+  <!-- 🌀 Loading Screen -->
+  <div id="loading-screen">
+    <div class="spinner"></div>
+    <div id="loading-message">Loading...</div>
+    <div id="loading-time"></div>
+    <div id="loading-countdown"></div>
+  </div>
+
+  <!-- 🕹 Main Menu -->
+  <div class="main-menu" style="display: none;">
+    <img src="Mainmenu.png" alt="Main Menu Image" />
+    <button onclick="enterGame()">Play</button>
+  </div>
+
+  <!-- 🧍 Game Content -->
+  <div class="game-container">
+    <div class="base-container">
+      <img id="base-image" src="Base.png" alt="Base Image">
+      <img id="base2-image" src="Base2.png" alt="Base 2" style="display: none;">
+      <img id="base3-image" src="Base3.png" alt="Base 3" style="display: none;">
+      <img id="base4-image" src="Base4.png" alt="Base 4" style="display: none;">
+      <img id="base5-image" src="Base5.png" alt="Base 5" style="display: none;">
+
+      <button class="small-button button-1" onclick="changeToBase2()"></button>
+      <button class="small-button button-2" onclick="changeToBase3()"></button>
+      <button class="small-button button-3" onclick="changeToBase4()"></button>
+      <button class="small-button button-4" onclick="changeToBase5()"></button>
+      <button id="wind-button">🌬 Wind</button>
+    </div>
+
+    <!-- 🎛 Controls -->
+    <div class="controls">
+      <div class="combined-scroll-bar" id="presetScrollBar"></div>
+      <div class="combined-scroll-bar" id="categoryScrollBar"></div>
+      <div class="scrollable-buttons"></div>
+    </div>
+  </div>
+
+  <!-- 🔌 Scripts -->
+  <script src="script.js"></script>
+  <script src="load.js"></script>
+  <script src="preset.js"></script>
+  <script src="scrolls.js"></script>
+  <script src="fps-monitor.js"></script>
+  <script>
+/* === Color Wheel Picker (append only) ==================================== */
+(() => {
+  // ---------- Tiny utils ----------
+  const clamp = (v,min,max)=>Math.min(max,Math.max(min,v));
+  const toHex = v => v.toString(16).padStart(2,'0');
+  const rgbToHex = (r,g,b) => `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  function hsvToRgb(h, s, v){
+    h = ((h % 360) + 360) % 360;
+    s = clamp(s,0,1); v = clamp(v,0,1);
+    const c = v * s, x = c * (1 - Math.abs((h/60)%2 - 1)), m = v - c;
+    let r=0,g=0,b=0;
+    if (0<=h && h<60)   [r,g,b]=[c,x,0];
+    else if (60<=h&&h<120) [r,g,b]=[x,c,0];
+    else if (120<=h&&h<180)[r,g,b]=[0,c,x];
+    else if (180<=h&&h<240)[r,g,b]=[0,x,c];
+    else if (240<=h&&h<300)[r,g,b]=[x,0,c];
+    else                    [r,g,b]=[c,0,x];
+    return [Math.round((r+m)*255), Math.round((g+m)*255), Math.round((b+m)*255)];
+  }
+  function hexToHsv(hex){
+    const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if(!m) return [0,0,1];
+    let r = parseInt(m[1],16)/255, g = parseInt(m[2],16)/255, b = parseInt(m[3],16)/255;
+    const max = Math.max(r,g,b), min = Math.min(r,g,b), d = max-min;
+    let h = 0;
+    if (d !== 0) {
+      switch(max){
+        case r: h = ((g-b)/d) % 6; break;
+        case g: h = (b-r)/d + 2; break;
+        case b: h = (r-g)/d + 4; break;
+      }
+      h *= 60; if (h<0) h+=360;
+    }
+    const s = max === 0 ? 0 : d/max;
+    const v = max;
+    return [h,s,v];
+  }
+
+  // ---------- Image tinting (preserves alpha, keeps shading via multiply) ----------
+  const TINT_CACHE = new Map(); // key: originalSrc|hex -> dataURL
+  function ensureLoaded(img){
+    return new Promise(res=>{
+      if (img.complete && img.naturalWidth) return res();
+      img.addEventListener('load', () => res(), {once:true});
+      img.addEventListener('error', () => res(), {once:true}); // still resolve, we'll fallback
+    });
+  }
+  async function tintImageToDataURL(img, hex){
+    await ensureLoaded(img);
+    const orig = img.dataset.originalSrc || img.src;
+    const key = `${orig}|${hex}`;
+    if (TINT_CACHE.has(key)) return TINT_CACHE.get(key);
+
+    const w = img.naturalWidth || 1, h = img.naturalHeight || 1;
+    const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+    const ctx = cv.getContext('2d');
+
+    // Draw original
+    ctx.clearRect(0,0,w,h);
+    ctx.drawImage(img, 0, 0);
+
+    // Multiply tint to keep shading
+    ctx.globalCompositeOperation = 'multiply';
+    ctx.fillStyle = hex;
+    ctx.fillRect(0, 0, w, h);
+
+    // Re-apply original alpha mask
+    ctx.globalCompositeOperation = 'destination-in';
+    ctx.drawImage(img, 0, 0);
+
+    let url;
+    try {
+      url = cv.toDataURL('image/png');
+    } catch {
+      url = null; // CORS-tainted, will fallback
+    }
+    if (url) TINT_CACHE.set(key, url);
+    return url;
+  }
+
+  async function applyHexToItem(itemId, hex){
+    const id = itemId || window.currentlySelectedItem;
+    if (!id) return;
+
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    if (!el.dataset.originalSrc) el.dataset.originalSrc = el.src;
+
+    // Try high-quality canvas tint first
+    const dataUrl = await tintImageToDataURL(el, hex);
+    if (dataUrl) {
+      el.style.filter = '';
+      el.src = dataUrl;
+      return;
+    }
+
+    // Fallback: approximate with hue-rotate filter
+    const [h] = hexToHsv(hex);
+    el.style.filter = `hue-rotate(${Math.round(h)}deg)`;
+  }
+
+  async function resetItem(itemId){
+    const id = itemId || window.currentlySelectedItem;
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (!el) return;
+    const orig = el.dataset.originalSrc;
+    if (orig) el.src = orig;
+    el.style.filter = '';
+  }
+
+  // Expose APIs used by the swatch upgrade (and by the wheel below)
+  window.setItemCustomColor = (itemIdOrHex, maybeHex) => {
+    // Allow setItemCustomColor(hex) or setItemCustomColor(itemId, hex)
+    if (maybeHex) return applyHexToItem(itemIdOrHex, maybeHex);
+    return applyHexToItem(null, itemIdOrHex);
+  };
+  window.resetItemColor = resetItem;
+  window.setItemNamedColor = async (itemId, name) => {
+    const MAP = {
+      Original: null,
+      Red: '#ff3b30',
+      Orange: '#ff9500',
+      Yellow: '#ffcc00',
+      Green: '#34c759',
+      Cyan: '#32ade6',
+      Blue: '#007aff',
+      Purple: '#af52de',
+      Pink: '#ff2d55'
+    };
+    const hex = MAP[name] ?? null;
+    if (!hex) return resetItem(itemId);
+    return applyHexToItem(itemId, hex);
+  };
+
+  // ---------- Build Color Wheel UI inside existing picker (append-only) ----------
+  function injectStyles(){
+    if (document.getElementById('color-wheel-styles')) return;
+    const css = `
+      .custom-color-wrap{margin-top:10px;display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+      .wheel-col{display:flex;flex-direction:column;align-items:center;gap:8px}
+      .color-wheel{width:220px;height:220px;touch-action:none;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,.1)}
+      .value-row{display:flex;align-items:center;gap:8px;width:220px}
+      .value-row input[type="range"]{flex:1}
+      .preview-chip{width:36px;height:36px;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+      .custom-actions{display:flex;gap:8px;flex-wrap:wrap}
+      .native-color{width:36px;height:36px;border:none;padding:0;background:transparent}
+      .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+    `;
+    const style = document.createElement('style');
+    style.id = 'color-wheel-styles';
+    style.textContent = css;
+    document.head.appendChild(style);
+  }
+
+  function buildWheelOnce(){
+    const picker = document.querySelector('.color-picker-container');
+    if (!picker || picker.querySelector('.custom-color-wrap')) return false;
+
+    injectStyles();
+
+    const title = document.createElement('h4');
+    title.textContent = 'Custom Color:';
+    picker.appendChild(title);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'custom-color-wrap';
+
+    const wheelCol = document.createElement('div');
+    wheelCol.className = 'wheel-col';
+
+    const canvas = document.createElement('canvas');
+    canvas.className = 'color-wheel';
+    canvas.width = 220; canvas.height = 220;
+
+    const valRow = document.createElement('div');
+    valRow.className = 'value-row';
+    const valLabel = document.createElement('span');
+    valLabel.textContent = 'Brightness';
+    valLabel.style.fontSize='12px';
+    const val = document.createElement('input');
+    val.type='range'; val.min='0'; val.max='100'; val.value='100';
+    valRow.appendChild(valLabel); valRow.appendChild(val);
+
+    const preview = document.createElement('div');
+    preview.className = 'preview-chip'; preview.title = 'Preview';
+
+    wheelCol.appendChild(canvas);
+    wheelCol.appendChild(valRow);
+
+    const ctlCol = document.createElement('div');
+    ctlCol.className = 'wheel-col';
+
+    const nativeLabel = document.createElement('span');
+    nativeLabel.style.fontSize='12px';
+    nativeLabel.textContent = 'Or pick:';
+    const nativeColor = document.createElement('input');
+    nativeColor.className = 'native-color';
+    nativeColor.type = 'color';
+    nativeColor.value = '#ff3b30';
+
+    const actions = document.createElement('div');
+    actions.className = 'custom-actions';
+    const applyBtn = document.createElement('button');
+    applyBtn.textContent = 'Apply';
+    const resetBtn = document.createElement('button');
+    resetBtn.textContent = 'Reset';
+
+    actions.appendChild(applyBtn);
+    actions.appendChild(resetBtn);
+
+    ctlCol.appendChild(preview);
+    ctlCol.appendChild(nativeLabel);
+    ctlCol.appendChild(nativeColor);
+    ctlCol.appendChild(actions);
+
+    wrap.appendChild(wheelCol);
+    wrap.appendChild(ctlCol);
+    picker.appendChild(wrap);
+
+    // ---- draw wheel ----
+    const ctx = canvas.getContext('2d');
+    const R = canvas.width/2;
+    const C = {x:R, y:R};
+    let sel = {h:0, s:1, v:1};
+    function drawWheel(){
+      const img = ctx.createImageData(canvas.width, canvas.height);
+      for (let y=0; y<canvas.height; y++){
+        for (let x=0; x<canvas.width; x++){
+          const dx = x - C.x, dy = y - C.y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          const idx = (y*canvas.width + x) * 4;
+          if (dist <= R){
+            const h = (Math.atan2(dy, dx) * 180/Math.PI + 360) % 360;
+            const s = clamp(dist / R, 0, 1);
+            const [rr, gg, bb] = hsvToRgb(h, s, sel.v);
+            img.data[idx]   = rr;
+            img.data[idx+1] = gg;
+            img.data[idx+2] = bb;
+            img.data[idx+3] = 255;
+          } else {
+            img.data[idx+3] = 0;
+          }
+        }
+      }
+      ctx.putImageData(img, 0, 0);
+      updatePreview();
+    }
+    function updatePreview(){
+      const [r,g,b] = hsvToRgb(sel.h, sel.s, sel.v);
+      const hex = rgbToHex(r,g,b);
+      preview.style.background = hex;
+      nativeColor.value = hex;
+    }
+    function pickAt(evt){
+      const rect = canvas.getBoundingClientRect();
+      const px = (evt.touches ? evt.touches[0].clientX : evt.clientX) - rect.left;
+      const py = (evt.touches ? evt.touches[0].clientY : evt.clientY) - rect.top;
+      const dx = px - C.x, dy = py - C.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist > R) return;
+      sel.h = (Math.atan2(dy, dx) * 180/Math.PI + 360) % 360;
+      sel.s = clamp(dist / R, 0, 1);
+      updatePreview();
+    }
+
+    // wheel interactions
+    let dragging = false;
+    const start = (e)=>{ dragging = true; pickAt(e); e.preventDefault(); };
+    const move  = (e)=>{ if(!dragging) return; pickAt(e); };
+    const end   = ()=> dragging = false;
+
+    canvas.addEventListener('mousedown', start);
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', end);
+
+    canvas.addEventListener('touchstart', start, {passive:false});
+    window.addEventListener('touchmove', move, {passive:false});
+    window.addEventListener('touchend', end);
+
+    val.addEventListener('input', () => { sel.v = parseInt(val.value,10)/100; drawWheel(); });
+
+    // native color fallback
+    nativeColor.addEventListener('input', () => {
+      const [h,s,v] = hexToHsv(nativeColor.value);
+      sel.h = h; sel.s = s; sel.v = v;
+      drawWheel();
+    });
+
+    applyBtn.addEventListener('click', async () => {
+      const [r,g,b] = hsvToRgb(sel.h, sel.s, sel.v);
+      const hex = rgbToHex(r,g,b);
+      await window.setItemCustomColor(hex);
+      window.hideColorPicker?.();
+    });
+
+    resetBtn.addEventListener('click', async () => {
+      await window.resetItemColor();
+      window.hideColorPicker?.();
+    });
+
+    // initial paint
+    drawWheel();
+    return true;
+  }
+
+  // Try to build when the picker exists (it may be created dynamically)
+  const tryBuild = () => {
+    const ok = buildWheelOnce();
+    return ok;
+  };
+  window.addEventListener('load', tryBuild);
+  const mo = new MutationObserver(() => tryBuild());
+  mo.observe(document.documentElement, {childList:true, subtree:true});
+})();
+</script>
+<script>
+/* === Pure Recolor (No-Merge) Engine — append only ======================== */
+(() => {
+  // Map for named colors (matches your swatches)
+  const NAMED = {
+    Original: null,
+    Red: '#ff3b30',
+    Orange: '#ff9500',
+    Yellow: '#ffcc00',
+    Green: '#34c759',
+    Cyan: '#32ade6',
+    Blue: '#007aff',
+    Purple: '#af52de',
+    Pink: '#ff2d55'
+  };
+
+  // Create (or reuse) a color overlay for an item <img>
+  function ensureOverlay(img) {
+    if (!img || !img.id) return null;
+    const overlayId = img.id + '__pureTint';
+    let ov = document.getElementById(overlayId);
+    if (ov) return ov;
+
+    const base = document.querySelector('.base-container') || img.parentElement || document.body;
+    ov = document.createElement('div');
+    ov.id = overlayId;
+    ov.style.position = 'absolute';
+    ov.style.pointerEvents = 'none';
+    ov.style.mixBlendMode = 'color';               // pure hue/sat, keeps brightness from base
+    ov.style.opacity = '1';
+    ov.style.willChange = 'transform, width, height';
+    ov.style.transform = 'translate3d(0,0,0)';
+    ov.style.background = 'transparent';
+    ov.style.isolation = 'isolate';                // helps limit blend scope in many browsers
+
+    // Mask the overlay to the PNG’s alpha (so we only color inside the sprite)
+    const setMask = () => {
+      const url = img.currentSrc || img.src;
+      ov.style.maskImage = `url("${url}")`;
+      ov.style.maskRepeat = 'no-repeat';
+      ov.style.maskSize = '100% 100%';
+      ov.style.webkitMaskImage = `url("${url}")`;
+      ov.style.webkitMaskRepeat = 'no-repeat';
+      ov.style.webkitMaskSize = '100% 100%';
+    };
+    setMask();
+
+    // Track position/size & visibility so the overlay perfectly follows the img
+    const sync = () => {
+      const baseRect = (document.querySelector('.base-container') || document.body).getBoundingClientRect();
+      const r = img.getBoundingClientRect();
+      ov.style.left = (r.left - baseRect.left) + 'px';
+      ov.style.top  = (r.top  - baseRect.top)  + 'px';
+      ov.style.width  = r.width  + 'px';
+      ov.style.height = r.height + 'px';
+      ov.style.visibility = img.style.visibility || 'hidden';
+      // Keep overlay above the image but under upper garments
+      const z = parseInt(img.style.zIndex || '0', 10);
+      ov.style.zIndex = String(z + 1);
+      requestAnimationFrame(sync);
+    };
+    requestAnimationFrame(sync);
+
+    // Update mask if the image source changes
+    new MutationObserver(() => setMask())
+      .observe(img, { attributes: true, attributeFilter: ['src'] });
+
+    base.appendChild(ov);
+    return ov;
+  }
+
+  // Apply a pure color without mixing the old one
+  function applyPureColor(itemId, hex) {
+    const id = itemId || window.currentlySelectedItem;
+    if (!id) return;
+    const img = document.getElementById(id);
+    if (!img) return;
+
+    // 1) Neutralize original chroma so old hue doesn’t bleed through.
+    if (!img.dataset._origFilter) img.dataset._origFilter = img.style.filter || '';
+    // Grayscale but keep your existing blur/brightness etc. by appending instead of replacing:
+    const baseFilters = (img.dataset._origFilter || '').split(' ').filter(Boolean).filter(f => !/^saturate\(/.test(f));
+    baseFilters.push('saturate(0)'); // remove color, keep brightness/contrast from the sprite
+    img.style.filter = baseFilters.join(' ').trim();
+
+    // 2) Overlay with masked pure color
+    const ov = ensureOverlay(img);
+    if (!ov) return;
+
+    // If 'color' blend is unsupported, gracefully fallback to multiply (still clean on grayscale base)
+    ov.style.mixBlendMode = ('mixBlendMode' in ov.style) ? 'color' : 'multiply';
+    ov.style.background = hex;
+    ov.style.visibility = img.style.visibility || 'hidden';
+  }
+
+  // Reset to original
+  function resetPureColor(itemId) {
+    const id = itemId || window.currentlySelectedItem;
+    if (!id) return;
+    const img = document.getElementById(id);
+    if (!img) return;
+
+    // Remove overlay if present
+    const ov = document.getElementById(id + '__pureTint');
+    if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
+
+    // Restore original filters/src
+    if (img.dataset._origFilter != null) {
+      img.style.filter = img.dataset._origFilter;
+      delete img.dataset._origFilter;
+    } else {
+      img.style.filter = '';
+    }
+  }
+
+  // Utility: accept either (hex) or (itemId, hex)
+  function _argsToIdHex(a, b) {
+    if (b) return [a, b];
+    return [null, a];
+  }
+
+  // ---- Public API (override softly; fallback to previous if needed) ----
+  const prevSetCustom = window.setItemCustomColor;
+  const prevSetNamed  = window.setItemNamedColor;
+  const prevReset     = window.resetItemColor;
+
+  window.setItemCustomColor = (a, b) => {
+    const [id, hex] = _argsToIdHex(a, b);
+    if (!hex) return;
+    try { applyPureColor(id, hex); }
+    catch(e){ prevSetCustom?.(a, b); }
+  };
+
+  window.setItemNamedColor = (itemId, name) => {
+    const hex = NAMED[name] ?? null;
+    if (!hex) { window.resetItemColor?.(itemId); return; }
+    try { applyPureColor(itemId, hex); }
+    catch(e){ prevSetNamed?.(itemId, name); }
+  };
+
+  window.resetItemColor = (itemId) => {
+    try { resetPureColor(itemId); }
+    catch(e){ prevReset?.(itemId); }
+  };
+
+  // Optional: keep overlays in sync with visibility toggles everywhere.
+  const visMo = new MutationObserver((muts) => {
+    muts.forEach(m => {
+      if (m.type === 'attributes' && m.attributeName === 'style' && m.target.id) {
+        const img = m.target;
+        const ov = document.getElementById(img.id + '__pureTint');
+        if (ov) ov.style.visibility = img.style.visibility || 'hidden';
+      }
+    });
+  });
+  visMo.observe(document.body, { attributes: true, subtree: true, attributeFilter: ['style'] });
+})();
+</script>
+</body>
+</html>
