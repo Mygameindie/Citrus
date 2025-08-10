@@ -1,0 +1,62 @@
+[
+    {
+        "id": "skirt4_1w",
+        "src": "skirt4_1w.png",
+        "alt": "Skirt 1Item 1w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "skirt4_2w",
+        "src": "skirt4_2w.png",
+        "alt": "Skirt 1Item 2w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "skirt4_3w",
+        "src": "skirt4_3w.png",
+        "alt": "Skirt 1Item 3w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "skirt4_4w",
+        "src": "skirt4_4w.png",
+        "alt": "Skirt 1Item 4w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "skirt4_5w",
+        "src": "skirt4_5w.png",
+        "alt": "Skirt 1Item 5w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "skirt4_6w",
+        "src": "skirt4_6w.png",
+        "alt": "Skirt 1Item 6w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "skirt4_7w",
+        "src": "skirt4_7w.png",
+        "alt": "Skirt 1Item 7w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "skirt4_8w",
+        "src": "skirt4_8w.png",
+        "alt": "Skirt 1Item 8w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "skirt4_9w",
+        "src": "skirt4_9w.png",
+        "alt": "Skirt 1Item 9w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "skirt4_10w",
+        "src": "skirt4_10w.png",
+        "alt": "Skirt 1Item 10w",
+        "visibility": "hidden"
+    }
+]

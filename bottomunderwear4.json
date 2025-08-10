@@ -1,0 +1,62 @@
+[
+    {
+        "id": "bottomunderwear4_1",
+        "src": "bottomunderwear4_1.png",
+        "alt": "Bottom Underwear 4 Item 1",
+        "visibility": "visible"
+    },
+    {
+        "id": "bottomunderwear4_2",
+        "src": "bottomunderwear4_2.png",
+        "alt": "Bottom Underwear 4 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "bottomunderwear4_3",
+        "src": "bottomunderwear4_3.png",
+        "alt": "Bottom Underwear 4 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "bottomunderwear4_4",
+        "src": "bottomunderwear4_4.png",
+        "alt": "Bottom Underwear 4 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "bottomunderwear4_5",
+        "src": "bottomunderwear4_5.png",
+        "alt": "Bottom Underwear 4 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "bottomunderwear4_6",
+        "src": "bottomunderwear4_6.png",
+        "alt": "Bottom Underwear 4 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "bottomunderwear4_7",
+        "src": "bottomunderwear4_7.png",
+        "alt": "Bottom Underwear 4 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "bottomunderwear4_8",
+        "src": "bottomunderwear4_8.png",
+        "alt": "Bottom Underwear 4 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "bottomunderwear4_9",
+        "src": "bottomunderwear4_9.png",
+        "alt": "Bottom Underwear 4 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "bottomunderwear4_10",
+        "src": "bottomunderwear4_10.png",
+        "alt": "Bottom Underwear 4 Item 10",
+        "visibility": "hidden"
+    }
+]

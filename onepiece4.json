@@ -1,0 +1,62 @@
+[
+    {
+        "id": "onepiece4_1",
+        "src": "onepiece4_1.png",
+        "alt": "One Piece 4 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece4_2",
+        "src": "onepiece4_2.png",
+        "alt": "One Piece 4 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece4_3",
+        "src": "onepiece4_3.png",
+        "alt": "One Piece 4 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece4_4",
+        "src": "onepiece4_4.png",
+        "alt": "One Piece 4 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece4_5",
+        "src": "onepiece4_5.png",
+        "alt": "One Piece 4 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece4_6",
+        "src": "onepiece4_6.png",
+        "alt": "One Piece 4 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece4_7",
+        "src": "onepiece4_7.png",
+        "alt": "One Piece 4 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece4_8",
+        "src": "onepiece4_8.png",
+        "alt": "One Piece 4 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece4_9",
+        "src": "onepiece4_9.png",
+        "alt": "One Piece 4 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece4_10",
+        "src": "onepiece4_10.png",
+        "alt": "One Piece 4 Item 10",
+        "visibility": "hidden"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "id": "pants4_1",
+        "src": "pants4_1.png",
+        "alt": "Pants 4 items 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants4_2",
+        "src": "pants4_2.png",
+        "alt": "Pants 4 items 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants4_3",
+        "src": "pants4_3.png",
+        "alt": "Pants 4 items 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants4_4",
+        "src": "pants4_4.png",
+        "alt": "Pants 4 items 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants4_5",
+        "src": "pants4_5.png",
+        "alt": "Pants 4 items 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants4_6",
+        "src": "pants4_6.png",
+        "alt": "Pants 4 items 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants4_7",
+        "src": "pants4_7.png",
+        "alt": "Pants 4 items 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants4_8",
+        "src": "pants4_8.png",
+        "alt": "Pants 4 items 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants4_9",
+        "src": "pants4_9.png",
+        "alt": "Pants 4 items 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants4_10",
+        "src": "pants4_10.png",
+        "alt": "Pants 4 items 10",
+        "visibility": "hidden"
+    }
+]

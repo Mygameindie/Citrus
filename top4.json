@@ -1,0 +1,62 @@
+[
+    {
+        "id": "top4_1",
+        "src": "top4_1.png",
+        "alt": "Top 4 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top4_2",
+        "src": "top4_2.png",
+        "alt": "Top 4 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top4_3",
+        "src": "top4_3.png",
+        "alt": "Top 4 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top4_4",
+        "src": "top4_4.png",
+        "alt": "Top 4 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top4_5",
+        "src": "top4_5.png",
+        "alt": "Top 4 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top4_6",
+        "src": "top4_6.png",
+        "alt": "Top 4 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top4_7",
+        "src": "top4_7.png",
+        "alt": "Top 4 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top4_8",
+        "src": "top4_8.png",
+        "alt": "Top 4 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top4_9",
+        "src": "top4_9.png",
+        "alt": "Top 4 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top4_10",
+        "src": "top4_10.png",
+        "alt": "Top 4 Item 10",
+        "visibility": "hidden"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "id": "socks2_1",
+        "src": "socks2_1.png",
+        "alt": "Socks 2 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks2_2",
+        "src": "socks2_2.png",
+        "alt": "Socks 2 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks2_3",
+        "src": "socks2_3.png",
+        "alt": "Socks 2 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks2_4",
+        "src": "socks2_4.png",
+        "alt": "Socks 2 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks2_5",
+        "src": "socks2_5.png",
+        "alt": "Socks 2 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks2_6",
+        "src": "socks2_6.png",
+        "alt": "Socks 2 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks2_7",
+        "src": "socks2_7.png",
+        "alt": "Socks 2 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks2_8",
+        "src": "socks2_8.png",
+        "alt": "Socks 2 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks2_9",
+        "src": "socks2_9.png",
+        "alt": "Socks 2 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks2_10",
+        "src": "socks2_10.png",
+        "alt": "Socks 2 Item 10",
+        "visibility": "hidden"
+    }
+]

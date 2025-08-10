@@ -1,0 +1,62 @@
+[
+    {
+        "id": "onepiece3_1",
+        "src": "onepiece3_1.png",
+        "alt": "Onepiece3 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece3_2",
+        "src": "onepiece3_2.png",
+        "alt": "Onepiece3 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece3_3",
+        "src": "onepiece3_3.png",
+        "alt": "Onepiece3 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece3_4",
+        "src": "onepiece3_4.png",
+        "alt": "Onepiece3 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece3_5",
+        "src": "onepiece3_5.png",
+        "alt": "Onepiece3 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece3_6",
+        "src": "onepiece3_6.png",
+        "alt": "Onepiece3 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece3_7",
+        "src": "onepiece3_7.png",
+        "alt": "Onepiece3 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece3_8",
+        "src": "onepiece3_8.png",
+        "alt": "Onepiece3 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece3_9",
+        "src": "onepiece3_9.png",
+        "alt": "Onepiece3 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "onepiece3_10",
+        "src": "onepiece3_10.png",
+        "alt": "Onepiece3 Item 10",
+        "visibility": "hidden"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "id": "accessories3_1",
+        "src": "accessories3_1.png",
+        "alt": "Accessories3 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "accessories3_2",
+        "src": "accessories3_2.png",
+        "alt": "Accessories3 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "accessories3_3",
+        "src": "accessories3_3.png",
+        "alt": "Accessories3 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "accessories3_4",
+        "src": "accessories3_4.png",
+        "alt": "Accessories3 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "accessories3_5",
+        "src": "accessories3_5.png",
+        "alt": "Accessories3 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "accessories3_6",
+        "src": "accessories3_6.png",
+        "alt": "Accessories3 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "accessories3_7",
+        "src": "accessories3_7.png",
+        "alt": "Accessories3 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "accessories3_8",
+        "src": "accessories3_8.png",
+        "alt": "Accessories3 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "accessories3_9",
+        "src": "accessories3_9.png",
+        "alt": "Accessories3 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "accessories3_10",
+        "src": "accessories3_10.png",
+        "alt": "Accessories3 Item 10",
+        "visibility": "hidden"
+    }
+]

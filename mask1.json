@@ -1,0 +1,62 @@
+[
+    {
+        "id": "mask1_1",
+        "src": "mask1_1.png",
+        "alt": "mask2 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "mask1_2",
+        "src": "mask1_2.png",
+        "alt": "mask2 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "mask1_3",
+        "src": "mask1_3.png",
+        "alt": "mask2 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "mask1_4",
+        "src": "mask1_4.png",
+        "alt": "mask2 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "mask1_5",
+        "src": "mask1_5.png",
+        "alt": "mask2 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "mask1_6",
+        "src": "mask1_6.png",
+        "alt": "mask2 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "mask1_7",
+        "src": "mask1_7.png",
+        "alt": "mask2 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "mask1_8",
+        "src": "mask1_8.png",
+        "alt": "mask2 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "mask1_9",
+        "src": "mask1_9.png",
+        "alt": "mask2 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "mask1_10",
+        "src": "mask1_10.png",
+        "alt": "mask2 Item 10",
+        "visibility": "hidden"
+    }
+]

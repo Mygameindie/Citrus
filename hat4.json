@@ -1,0 +1,12 @@
+[
+    { "id": "hat4_1", "src": "hat4_1.png", "alt": "Hat 4 Item 1", "visibility": "hidden" },
+    { "id": "hat4_2", "src": "hat4_2.png", "alt": "Hat 4 Item 2", "visibility": "hidden" },
+    { "id": "hat4_3", "src": "hat4_3.png", "alt": "Hat 4 Item 3", "visibility": "hidden" },
+    { "id": "hat4_4", "src": "hat4_4.png", "alt": "Hat 4 Item 4", "visibility": "hidden" },
+    { "id": "hat4_5", "src": "hat4_5.png", "alt": "Hat 4 Item 5", "visibility": "hidden" },
+    { "id": "hat4_6", "src": "hat4_6.png", "alt": "Hat 4 Item 6", "visibility": "hidden" },
+    { "id": "hat4_7", "src": "hat4_7.png", "alt": "Hat 4 Item 7", "visibility": "hidden" },
+    { "id": "hat4_8", "src": "hat4_8.png", "alt": "Hat 4 Item 8", "visibility": "hidden" },
+    { "id": "hat4_9", "src": "hat4_9.png", "alt": "Hat 4 Item 9", "visibility": "hidden" },
+    { "id": "hat4_10", "src": "hat4_10.png", "alt": "Hat 4 Item 10", "visibility": "hidden" }
+]

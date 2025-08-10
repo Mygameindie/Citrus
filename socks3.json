@@ -1,0 +1,62 @@
+[
+    {
+        "id": "socks3_1",
+        "src": "socks3_1.png",
+        "alt": "Socks3 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks3_2",
+        "src": "socks3_2.png",
+        "alt": "Socks3 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks3_3",
+        "src": "socks3_3.png",
+        "alt": "Socks3 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks3_4",
+        "src": "socks3_4.png",
+        "alt": "Socks3 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks3_5",
+        "src": "socks3_5.png",
+        "alt": "Socks3 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks3_6",
+        "src": "socks3_6.png",
+        "alt": "Socks3 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks3_7",
+        "src": "socks3_7.png",
+        "alt": "Socks3 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks3_8",
+        "src": "socks3_8.png",
+        "alt": "Socks3 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks3_9",
+        "src": "socks3_9.png",
+        "alt": "Socks3 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "socks3_10",
+        "src": "socks3_10.png",
+        "alt": "Socks3 Item 10",
+        "visibility": "hidden"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "id": "jacket4_1",
+        "src": "jacket4_1.png",
+        "alt": "Jacket 4 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "jacket4_2",
+        "src": "jacket4_2.png",
+        "alt": "Jacket 4 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "jacket4_3",
+        "src": "jacket4_3.png",
+        "alt": "Jacket 4 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "jacket4_4",
+        "src": "jacket4_4.png",
+        "alt": "Jacket 4 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "jacket4_5",
+        "src": "jacket4_5.png",
+        "alt": "Jacket 4 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "jacket4_6",
+        "src": "jacket4_6.png",
+        "alt": "Jacket 4 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "jacket4_7",
+        "src": "jacket4_7.png",
+        "alt": "Jacket 4 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "jacket4_8",
+        "src": "jacket4_8.png",
+        "alt": "Jacket 4 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "jacket4_9",
+        "src": "jacket4_9.png",
+        "alt": "Jacket 4 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "jacket4_10",
+        "src": "jacket4_10.png",
+        "alt": "Jacket 4 Item 10",
+        "visibility": "hidden"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "id": "pants1-item1",
+        "src": "pants1_1.png",
+        "alt": "Pants 1 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants1-item2",
+        "src": "pants1_2.png",
+        "alt": "Pants 1 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants1-item3",
+        "src": "pants1_3.png",
+        "alt": "Pants 1 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants1-item4",
+        "src": "pants1_4.png",
+        "alt": "Pants 1 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants1-item5",
+        "src": "pants1_5.png",
+        "alt": "Pants 1 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants1-item6",
+        "src": "pants1_6.png",
+        "alt": "Pants 1 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants1-item7",
+        "src": "pants1_7.png",
+        "alt": "Pants 1 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants1-item8",
+        "src": "pants1_8.png",
+        "alt": "Pants 1 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants1-item9",
+        "src": "pants1_9.png",
+        "alt": "Pants 1 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "pants1-item10",
+        "src": "pants1_10.png",
+        "alt": "Pants 1 Item 10",
+        "visibility": "hidden"
+    }
+]

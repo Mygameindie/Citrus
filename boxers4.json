@@ -1,0 +1,62 @@
+[
+    {
+        "id": "boxers4_1",
+        "src": "boxers4_1.png",
+        "alt": "Boxers 4 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "boxers4_2",
+        "src": "boxers4_2.png",
+        "alt": "Boxers 4 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "boxers4_3",
+        "src": "boxers4_3.png",
+        "alt": "Boxers 4 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "boxers4_4",
+        "src": "boxers4_4.png",
+        "alt": "Boxers 4 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "boxers4_5",
+        "src": "boxers4_5.png",
+        "alt": "Boxers 4 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "boxers4_6",
+        "src": "boxers4_6.png",
+        "alt": "Boxers 4 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "boxers4_7",
+        "src": "boxers4_7.png",
+        "alt": "Boxers 4 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "boxers4_8",
+        "src": "boxers4_8.png",
+        "alt": "Boxers 4 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "boxers4_9",
+        "src": "boxers4_9.png",
+        "alt": "Boxers 4 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "boxers4_10",
+        "src": "boxers4_10.png",
+        "alt": "Boxers 4 Item 10",
+        "visibility": "hidden"
+    }
+]

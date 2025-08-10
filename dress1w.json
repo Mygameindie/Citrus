@@ -1,0 +1,62 @@
+[
+    {
+        "id": "dress1_1w",
+        "src": "dress1_1w.png",
+        "alt": "Dress 1 Item 1w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "dress1_2w",
+        "src": "dress1_2w.png",
+        "alt": "Dress 1 Item 2w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "dress1_3w",
+        "src": "dress1_3w.png",
+        "alt": "Dress 1 Item 3w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "dress1_4w",
+        "src": "dress1_4w.png",
+        "alt": "Dress 1 Item 4w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "dress1_5w",
+        "src": "dress1_5w.png",
+        "alt": "Dress 1 Item 5w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "dress1_6w",
+        "src": "dress1_6w.png",
+        "alt": "Dress 1 Item 6w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "dress1_7w",
+        "src": "dress1_7w.png",
+        "alt": "Dress 1 Item 7w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "dress1_8w",
+        "src": "dress1_8w.png",
+        "alt": "Dress 1 Item 8w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "dress1_9w",
+        "src": "dress1_9w.png",
+        "alt": "Dress 1 Item 9w",
+        "visibility": "hidden"
+    },
+    {
+        "id": "dress1_10w",
+        "src": "dress1_10w.png",
+        "alt": "Dress 1 Item 10w",
+        "visibility": "hidden"
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "id": "top3_1",
+        "src": "top3_1.png",
+        "alt": "Top3 Item 1",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top3_2",
+        "src": "top3_2.png",
+        "alt": "Top3 Item 2",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top3_3",
+        "src": "top3_3.png",
+        "alt": "Top3 Item 3",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top3_4",
+        "src": "top3_4.png",
+        "alt": "Top3 Item 4",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top3_5",
+        "src": "top3_5.png",
+        "alt": "Top3 Item 5",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top3_6",
+        "src": "top3_6.png",
+        "alt": "Top3 Item 6",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top3_7",
+        "src": "top3_7.png",
+        "alt": "Top3 Item 7",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top3_8",
+        "src": "top3_8.png",
+        "alt": "Top3 Item 8",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top3_9",
+        "src": "top3_9.png",
+        "alt": "Top3 Item 9",
+        "visibility": "hidden"
+    },
+    {
+        "id": "top3_10",
+        "src": "top3_10.png",
+        "alt": "Top3 Item 10",
+        "visibility": "hidden"
+    }
+]

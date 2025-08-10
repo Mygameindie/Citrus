@@ -1,0 +1,52 @@
+
+/* Generic horizontal scroll bar style */
+.scroll-bar {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 8px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    margin: 10px auto;
+    width: 95%;
+    max-width: 100vw;
+    scroll-behavior: smooth;
+}
+
+.scroll-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-bar button {
+    flex-shrink: 0;
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.scroll-bar button:hover {
+    background-color: #3700b3;
+}
+
+/* Button wraps for item buttons inside item scroll bar */
+.scrollable-buttons {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 8px;
+    padding: 10px;
+    background: rgba(245, 245, 245, 0.9);
+    border-radius: 10px;
+    width: 95%;
+    max-width: 100vw;
+}
+
+.scrollable-buttons::-webkit-scrollbar {
+    display: none;
+}
